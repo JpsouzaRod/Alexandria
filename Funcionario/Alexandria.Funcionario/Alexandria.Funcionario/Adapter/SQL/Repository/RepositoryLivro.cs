@@ -1,6 +1,7 @@
 ﻿using Alexandria.Funcionario.Adapter.SQL.Context;
 using Alexandria.Funcionario.Domain.Core.Interface.Adapter.SQL;
 using Alexandria.Funcionario.Domain.Core.Models;
+using Dapper;
 
 namespace Alexandria.Funcionario.Adapter.SQL.Repository
 {
@@ -16,7 +17,14 @@ namespace Alexandria.Funcionario.Adapter.SQL.Repository
         {
             using (var conn = context.CreateConnection())
             {
-
+                var sql = "INSERT INTO Livro VALUES (@codigo, @titulo, @autor, @status)";
+                await conn.ExecuteAsync(sql, 
+                    new { 
+                        livro.CodigoLivro, 
+                        livro.Titulo, 
+                        livro.Autor, 
+                        livro.Status 
+                    });
             }
         }
 
@@ -24,6 +32,14 @@ namespace Alexandria.Funcionario.Adapter.SQL.Repository
         {
             using (var conn = context.CreateConnection())
             {
+                var sql = "SELECT * FROM Livro WHERE CodigoLivro = @codigo";
+                var livro = await conn.QueryFirstOrDefaultAsync<Livro>(sql,
+                    new
+                    {
+                        codigoLivro,
+                    });
+
+                return livro;
 
             }
         }

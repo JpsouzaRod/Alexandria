@@ -5,6 +5,6 @@ namespace Alexandria.Funcionario.Domain.Core.Interface.Adapter.SQL
     public interface IRepositoryLivro
     {
         Task CadastrarLivro(Livro livro);
-        Task<Livro> ConsultarLivro(int codigoLivro);
+        Task<Livro> ConsultarLivro(int CodigoLivro);
     }
 }

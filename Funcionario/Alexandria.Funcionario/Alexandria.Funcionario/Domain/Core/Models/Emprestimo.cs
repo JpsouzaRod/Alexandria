@@ -7,9 +7,10 @@ namespace Alexandria.Funcionario.Domain.Core.Models
         public int Id { get; set; }
         public int CodigoLivro { get; set; }
         public int MatriculaAluno { get; set; }
-        public DateTime DataEmprestimo { get; private set; } = DateTime.Now;
-        public DateTime DataEntrega { get; private set; } = DateTime.Now.AddDays(7);
+        public DateTime DataEmprestimo { get; private set; }
+        public DateTime DataEntrega { get; private set; }
         public DateTime DataDevolucao { get; set; }
         public EnumStatusEmprestimo StatusEmprestimo { get; private set; } = EnumStatusEmprestimo.ABERTO;
+        public bool EmprestimoRenovado { get; set; }
     }
 }

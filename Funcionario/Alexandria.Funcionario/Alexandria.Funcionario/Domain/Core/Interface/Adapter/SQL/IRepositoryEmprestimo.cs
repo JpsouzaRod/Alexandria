@@ -5,7 +5,8 @@ namespace Alexandria.Funcionario.Domain.Core.Interface.Adapter.SQL
     public interface IRepositoryEmprestimo
     {
         Task CadastrarEmprestimo(Emprestimo emprestimo);
-        Task<Emprestimo> ConsultarEmprestimo(string codigoLivro);
-        Task CadastrarDevolucao(string codigoLivro);
+        Task<Emprestimo> ConsultarEmprestimo(int codigoLivro);
+        Task CadastrarDevolucao(int codigoLivro);
+        Task CadastrarRenovacao(int codigoLivro);
     }
 }
